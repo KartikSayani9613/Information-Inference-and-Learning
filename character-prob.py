@@ -4,7 +4,7 @@ import operator
 import matplotlib.pyplot as plt
 def main(argv):
 	if len(argv) != 1:
-		print("Invalif number arguments. \n Usage: \t python3 <this-script.py> <file>")
+		print("Invald number arguments. \n Usage: \t python3 <this-script.py> <file>")
 		return
 	freqs = {}
 	probs = []
@@ -18,12 +18,14 @@ def main(argv):
 				freqs[c] += 1
 			else:
 				freqs[c] = 1
+
 	num_chars = sum(freqs.values())
-	sorted_freqs = sorted(freqs.items(), key=operator.itemgetter(1))
+	sorted_freqs = sorted(freqs.items(), key=operator.itemgetter(1), reverse = True)
+	print('Frequencies:\n')
 	print(sorted_freqs)
 	for freq in sorted_freqs:
 		probs.append((freq[0],freq[1]*100/num_chars))
-	probs.reverse()
+	print('Probabilities:\n')
 	print(probs)
 
 	chars = list(zip(*probs))[0]
